@@ -12,5 +12,29 @@ input{
 	border: none;
 	border-radius: 0;
 	padding: 10px;
+	font-size: 16px;
 	margin-bottom: 10px;
+	vertical-align: middle;
+	border-top-style: none;
+	border-left-style: none;
+	border-right-style: none;
+	border-bottom: 1px solid;
+	color: #333;
+
+
 }
+
+.field{ 
+	display:flex;
+	padding: 480 px;
+	text-align: left;
+	align-content:center;
+	vertical-align: middle;
+	font-family: "Times New Roman", Times, serif;
+
+ }
+
+.boton {
+	text-align: center;
+
+ }
