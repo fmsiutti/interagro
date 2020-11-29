@@ -7,7 +7,7 @@ body {
 	background-color: #ddd;
 }
 
-input{
+input, select{
 	width: 100%;
 	border: none;
 	border-radius: 0;
@@ -26,12 +26,14 @@ input{
 
 .field{ 
 	display:flex;
-	padding: 480 px;
 	text-align: left;
 	align-content:center;
 	vertical-align: middle;
-	font-family: "Times New Roman", Times, serif;
+ }
 
+.field{
+	font-weight: lighter;
+	text-transform: capitalize;
  }
 
 .boton {
