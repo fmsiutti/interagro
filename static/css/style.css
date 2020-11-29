@@ -1,0 +1,16 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Open Sans',sans-serif;
+	background-color: #ddd;
+}
+
+input{
+	width: 100%;
+	border: none;
+	border-radius: 0;
+	padding: 10px;
+	margin-bottom: 10px;
+}
