@@ -29,3 +29,13 @@ document.querySelector('#boton').addEventListener('click', () => {
 	console.log('El ndvi es: ', unidad_1.getMateriaSeca())
 
 })
+
+document.querySelector('#form').addEventListener('submit', (event) => {
+
+	event.preventDefault()
+
+	let formdata = new FormData(document.querySelector('#form'))
+	cosole.log (formdata)
+
+
+	})
