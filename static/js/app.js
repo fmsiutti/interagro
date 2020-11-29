@@ -1,41 +1,48 @@
-import { UnidadProductiva } from  './Models/index.js'
+import { UnidadProductiva, IndiceRiesgo } from  './Models/index.js'
+import { getSolarIrradiance } from  './thirdParty.js'
 import { getActualField, getNdviByField } from './auravantAPI.js'
+
+let unidadesProductivas = [];
 
 getActualField().then(lote => {
 	if (lote.id) {
 		document.querySelector('#titulo').innerText = 'Calcular Indice de Riesgo para el lote ' + lote.nombre
 
 		getNdviByField(lote.id).then(ndvi => {
-			console.log(ndvi)
+			
+			const unidadProductiva = new UnidadProductiva(lote, ndvi.ndvi, 'Agropiro')
+			unidadProductiva.reduceNdvi()
+			unidadProductiva.getMateriaSeca().then(res => {
+				unidadesProductivas.push(unidadProductiva)
+			})
 		})
 	}else{
 		document.querySelector('#titulo').innerText = 'Selecciona un lote antes de empezar!'
 	}
 })
+// document.querySelector('#boton').addEventListener('click', () => {
 
+// 	const vacas = 100
+// 	const toros = 100
+// 	const vaquillonas = 100
+// 	const novillos = 100
+// 	const novillitos = 100
 
-document.querySelector('#boton').addEventListener('click', () => {
+// 	let indiceRiesgo = new IndiceRiesgo(unidadesProductivas, vacas,toros,vaquillonas,novillos,novillitos)
+
+// })
+
 	
 
-	const unidad_1 = new UnidadProductiva({
-		id: 1,
-		bounds: [ 1, 2, 3, 4 ],
-		ndvi: .7,
-		area: 120,
-		nombre: 'Lote 1',
-		wkt: 'wkt',
-	}, 'campo1', 1.5, {'indice1': .3, 'indice2': 125})
-
-	console.log('El ndvi es: ', unidad_1.getMateriaSeca())
-
-})
-
-document.querySelector('#form').addEventListener('submit', (event) => {
-
-	event.preventDefault()
-
-	let formdata = new FormData(document.querySelector('#form'))
-	cosole.log (formdata)
+// 	console.log('El ndvi es: ', unidad_1.getMateriaSeca())
 
 
-	})
+// document.querySelector('#form').addEventListener('submit', (event) => {
+
+// 	event.preventDefault()
+
+// 	let formdata = new FormData(document.querySelector('#form'))
+// 	cosole.log (formdata)
+
+
+// 	})

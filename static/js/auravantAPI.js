@@ -1,3 +1,8 @@
+const getActualFarm = () => {
+	return avt.state.async_getActualFarm()
+		.then(campo => campo.info)
+}
+
 const getActualField = () => {
 	return avt.state.async_getActualField()
 		.then(lote => lote.info)
@@ -14,5 +19,6 @@ const getNdviByField = field_id => {
 
 export {
 	getActualField,
+	getActualFarm,
 	getNdviByField,
 }
