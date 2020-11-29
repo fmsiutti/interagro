@@ -1,14 +1,21 @@
 import { UnidadProductiva } from  './Models/index.js'
 import { getActualField, getNdviByField } from './auravantAPI.js'
 
-document.querySelector('#boton').addEventListener('click', () => {
-	
-	getActualField().then(lote => {
-		console.log(lote)
+getActualField().then(lote => {
+	if (lote.id) {
+		document.querySelector('#titulo').innerText = 'Calcular Indice de Riesgo para el lote ' + lote.nombre
+
 		getNdviByField(lote.id).then(ndvi => {
 			console.log(ndvi)
 		})
-	})
+	}else{
+		document.querySelector('#titulo').innerText = 'Selecciona un lote antes de empezar!'
+	}
+})
+
+
+document.querySelector('#boton').addEventListener('click', () => {
+	
 
 	const unidad_1 = new UnidadProductiva({
 		id: 1,
